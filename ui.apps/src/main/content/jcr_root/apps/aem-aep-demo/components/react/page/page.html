@@ -19,7 +19,13 @@
       data-sly-use.head="head.html"
       data-sly-use.footer="footer.html"
       data-sly-use.redirect="redirect.html">
-    <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
+    <head>
+	<script>
+		//prehiding snippet for Adobe Target with asynchronous tags deployment
+		(function(g,b,d,f){(function(a,c,d){if(a){var e=b.createElement("style");e.id=c;e.innerHTML=d;a.appendChild(e)}})(b.getElementsByTagName("head")[0],"at-body-style",d);setTimeout(function(){var a=b.getElementsByTagName("head")[0];if(a){var c=b.getElementById("at-body-style");c&&a.removeChild(c)}},f)})(window,document,"body {opacity: 0 !important}",3E3);
+	</script>
+
+	<sly data-sly-call="${head.head @ page = page, pwa = pwa}" /></head>
     <body class="${page.cssClassNames}"
           id="${page.id}"
           data-cmp-data-layer-enabled="${page.data ? true : false}">

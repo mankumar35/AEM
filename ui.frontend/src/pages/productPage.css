@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+main > * {
+    margin: 15px;
+}
+
+.cartButton {
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    height: 75px;
+    width: 75px;
+    background-color: thistle;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
+}
+
+.cartButton:hover {
+    width: 100px;
+    height: 100px;
+    font-size: larger;
+    background-color: rgb(179, 138, 105);
+    transform: translateX(-10px);
+    transform: translateY(10px);
+}
