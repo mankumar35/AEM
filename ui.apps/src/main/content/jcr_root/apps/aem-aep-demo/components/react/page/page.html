@@ -20,9 +20,36 @@
       data-sly-use.footer="footer.html"
       data-sly-use.redirect="redirect.html">
     <head>
-	<script>
-		//prehiding snippet for Adobe Target with asynchronous tags deployment
-		(function(g,b,d,f){(function(a,c,d){if(a){var e=b.createElement("style");e.id=c;e.innerHTML=d;a.appendChild(e)}})(b.getElementsByTagName("head")[0],"at-body-style",d);setTimeout(function(){var a=b.getElementsByTagName("head")[0];if(a){var c=b.getElementById("at-body-style");c&&a.removeChild(c)}},f)})(window,document,"body {opacity: 0 !important}",3E3);
+	<script type="text/javascript">
+		var digitalData = {
+			"page": {
+				"pageInfo": {
+					"pageName":"${pageProperties.jcr:title @context='scriptString'}",
+					"template":"${pageProperties.cq:template @context='scriptString'}",
+					"pageType": "${pageProperties.sling:resourceType @context='scriptString'}",
+					"platform": "aem",
+					"platformVersion":"cloud",
+					"environment": "prod"
+				}
+			},
+			"user": {
+				"userInfo": {
+					"authState": "logged out",
+					"age":""
+				}
+			},
+			"location": {
+				"locationCity": "",
+				"locationName":"",
+				"locationType": "",
+				"storeName":"",
+				"storeType":"",
+				"lat":"",
+				"long":""
+			},
+			"event": [],
+			"category": "login page"
+		}
 	</script>
 
 	<sly data-sly-call="${head.head @ page = page, pwa = pwa}" /></head>
