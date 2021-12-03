@@ -58,12 +58,12 @@ let Navbar = ({user ,setShowInsurance}) => {
                     <i className="fas fa-bars"></i>
                     <ul>
 
-                        <li> <a href="#">Home</a></li>
-                        <li> <a href="#">About</a></li>
-                        <li> <a href="#">Contact</a></li>
-                        <li> <a href="#">Blog</a></li>
-                        <li> <a href="#">Careers</a></li>
-                        <li> <a href="" onClick={(e) => { e.preventDefault(); setShowInsurance(true)} }>Insurance</a> </li>
+                        <li> <a href="#home">Home</a></li>
+                        <li> <a href="#About" target="_blank">About</a></li>
+                        <li> <a href="#contact">Contact</a></li>
+                        <li> <a href="#blog">Blog</a></li>
+                        <li> <a href="#careers">Careers</a></li>
+                        <li> <a href="#insurance" onClick={(e) => { e.preventDefault(); window.digitalData.category='insurance page'; setShowInsurance(true)} }>Insurance</a> </li>
                         <li> <NotificationComponent showAlert={showAlert} alertUser={alertUser} /></li>
                         <li> Hello {user.givenName} {user.lastName}</li>
                     </ul>
