@@ -4,19 +4,23 @@ let shrek = {
     username: "Shrek",
     password: "donkey",
     profile: "active",
-    age:18,
     daysLeft: 50,
+    locationCity:"melbourne",
+    age:37,
+    insuranceAge:3,
     secondsLeft: 10,
 }
 
-let alladin = {
+let avani = {
     givenName: "Avani",
     lastName: "Gregg",
     username: "Avani",
     password: "avani",
     profile: "active",
     daysLeft: 28,
+    locationCity:"sydney",
     age:27,
+    insuranceAge:5,
     secondsLeft: 5,
 }
 let mickey = {
@@ -26,7 +30,9 @@ let mickey = {
     password: "pluto",
     profile: "to retain",
     daysLeft: 10,
-    age:35,
+    locationCity:"sydney",
+    age:18,
+    insuranceAge:2,
     secondsLeft: 10,
 }
 
@@ -34,5 +40,5 @@ export let calculateRemainingDays = (user) => {
     return user.daysLeft + user.secondsLeft/(60*60*24)
 }
 
-export let customerList = [shrek, alladin, mickey]
+export let customerList = [shrek, avani, mickey]
 
