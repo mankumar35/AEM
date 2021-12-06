@@ -1,3 +1,24 @@
 h2.notifAlert {
     color: red !important;
 }
+
+.discountImage {
+    height: 400px;
+    width: 400px;
+}
+
+.image_backshadow {
+    background-color: rgba(9, 9, 9, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120vh;
+    width: 120vw;
+}
+
+.image_backshadow img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

@@ -23,22 +23,22 @@ let avani = {
     insuranceAge:5,
     secondsLeft: 5,
 }
-let mickey = {
-    givenName: "Mickey",
-    lastName: "Mouse",
-    username: "Mickey",
-    password: "pluto",
-    profile: "to retain",
-    daysLeft: 10,
+let sam = {
+    givenName: "Sam",
+    lastName: "Curran",
+    username: "Sam",
+    password: "sammy",
+    profile: "active",
+    daysLeft: 28,
     locationCity:"sydney",
-    age:18,
+    age:26,
     insuranceAge:2,
-    secondsLeft: 10,
+    secondsLeft: 5,
 }
 
 export let calculateRemainingDays = (user) => {
     return user.daysLeft + user.secondsLeft/(60*60*24)
 }
 
-export let customerList = [shrek, avani, mickey]
+export let customerList = [shrek, avani, sam]
 

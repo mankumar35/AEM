@@ -35,9 +35,9 @@ import org.osgi.service.component.annotations.Reference;
 
         immediate = true,
 
-        property = { "sling.servlet.extensions" + "=txt", "sling.servlet.methods" + "=GET",
+        property = { "sling.servlet.extensions" + "=json", "sling.servlet.methods" + "=GET",
 
-                "sling.servlet.paths" + "=/bin/ims/jwt" })
+                "sling.servlet.paths" + "=/bin/adobe/data", "sling.servlet.selectors" + "=offer" })
 
 public class JwtServlet extends SlingSafeMethodsServlet {
 
@@ -57,9 +57,9 @@ public class JwtServlet extends SlingSafeMethodsServlet {
         // String realm = config.getDomainRealm();
         final String access_token = jwtService.getAccessToken(req, apikey, techact, orgid, clientsecret);
         final String decision = jwtService.getDecisionOffer(access_token, apikey, orgid).toString();
-
-        resp.setContentType("text/plain");
-        resp.getWriter().write("Access Token = " + access_token + "\n\n" + "Offer = " + decision);
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        resp.getWriter().print(decision);
     }
 
 }

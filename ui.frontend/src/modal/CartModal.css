@@ -1,0 +1,40 @@
+.cartModalContainer {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+}
+
+.backshadow {
+    position: absolute;
+    top: -50px;
+    height: 200%;
+    width: 120%;
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 1000px
+}
+
+.ShowModal {
+    left: -30px;
+}
+.flexItems {
+    margin-top: 50px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+}
+li {
+    list-style-type: none;
+}
+
+.discountApplied {
+    margin-top: 50px;
+}
+
+.cartModalContainer button {
+    padding: 10px;
+    float: right;
+}
+
