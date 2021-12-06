@@ -90,7 +90,10 @@ Import-Package: javax.annotation;version=0.0.0,*
             <groupId>com.adobe.aem</groupId>
             <artifactId>aem-sdk-api</artifactId>
         </dependency>
-
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+		</dependency>
 
         <!-- Testing -->
         <dependency>
