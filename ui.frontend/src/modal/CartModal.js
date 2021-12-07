@@ -1,11 +1,13 @@
 import React, {useContext} from 'react'
 import "./CartModal.css"
+import { LocationDiscountContext, ToRetainDiscountContext } from "../App"
 let item_prices = [80, 120, 100, 90, 110, 150]
 
 let CartModal = ({list_of_items , user}) => {
 
-    const discount = 0;
-    console.log("wowoowowow " +discount)
+    const location_discount = useContext(LocationDiscountContext)
+    const to_retain_discount = useContext(ToRetainDiscountContext)
+
     const html_list_of_items = list_of_items.map((id) => {
         return(
             <li key={id}>
@@ -31,18 +33,30 @@ let CartModal = ({list_of_items , user}) => {
         })
     }
 
-    const calculateFinalPrice = (discount , list_of_items) => {
-        let discount_int = parseInt(discount.substr(0, discount.length-1))
+    const calculateFinalPrice = (location_discount , to_retain_discount, list_of_items) => {
+        let location_discount_int = parseInt(location_discount.substr(0, location_discount.length-1))
+        let to_retain_discount_int = parseInt(to_retain_discount.substr(0, to_retain_discount.length-1))
         let basePrice = 0
         for (let item of list_of_items){
             basePrice += item_prices[item]
         }
+        let applied_location_discount = 0
+        let applied_to_retain_discount = 0
+        console.log("ok  " + applied_to_retain_discount )
         if (user.locationCity === "melbourne"){
-            return basePrice * (100 - discount_int)/100 * 0.8
+            applied_location_discount = location_discount_int
         }
-        return basePrice * (100 - discount_int)/100
+        if (user.profile === "to retain"){
+            applied_to_retain_discount =  to_retain_discount_int
+        }
+        return basePrice * (100 - applied_location_discount)/100 * (100 - applied_to_retain_discount)/100
     }
 
+    const discountText = () => {
+        return (
+            <h3 className="discountApplied">Discount Applied : {user.profile=== "to retain" ? to_retain_discount : "0"} {user.locationCity == "melbourne" ? " and an additional 20%" : ''}</h3>
+        )
+    }
     const hideModal = () => {
         const modal = document.querySelector("#CartModal")
         modal.classList.remove("ShowModal")
@@ -61,8 +75,9 @@ let CartModal = ({list_of_items , user}) => {
                         {generateListOfPrices(list_of_items)}
                     </ul>
                 </div>
-                <h3 className="discountApplied">Discount Applied : {discount} {user.locationCity == "melbourne" ? " and an additional 20%" : ''}</h3>
-                <h3>Final Price : {calculateFinalPrice(discount , list_of_items)}</h3>
+                {(user.profile === "to retain" || (user.locationCity === "melbourne")) ? discountText() : ''}
+                
+                <h3>Final Price : {calculateFinalPrice(location_discount, to_retain_discount , list_of_items)}</h3>
                 <button>Purchase</button>
             </div>
         </div>

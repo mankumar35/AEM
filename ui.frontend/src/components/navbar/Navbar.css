@@ -16,9 +16,13 @@ h2.notifAlert {
     width: 120vw;
 }
 
-.image_backshadow img {
+.image_backshadow div {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.image_backshadow div h3 {
+    color: white;
 }

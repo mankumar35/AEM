@@ -1,18 +1,17 @@
-import sendCoords from "../../functions/sendCoords"
-import React from "react"
+import React from 'react'
 import {calculateRemainingDays} from "../../CustomerModel/Customers"
 import { useEffect, useState } from "react"
 import "./Navbar.css"
 import NotificationComponent from "./NotificationComponent"
 
-let Navbar = ({user ,setShowInsurance, image_url}) => {
-    
-    
+const THRESHOLD_DAYS = 30
+let Navbar = ({user ,setShowInsurance, image_url, getImageURL, retain_discount, to_retain_discount}) => {
+
     let [showAlert, setShowAlert] = useState(null)
     let [showImage, setShowImage] = useState(false)
     let checkIfUserNeedsAlert = (user) => {
         let days = calculateRemainingDays(user)
-        if (days <= 28) {
+        if (days <= THRESHOLD_DAYS) {
             user.profile = "to retain"
             setShowAlert(true)
         }
@@ -37,7 +36,7 @@ let Navbar = ({user ,setShowInsurance, image_url}) => {
                 user.daysLeft = user.daysLeft - 1
                 user.secondsLeft = 24*60*60
 
-                if (user.daysLeft <= 28) {
+                if (user.daysLeft <= THRESHOLD_DAYS) {
                     checkIfUserNeedsAlert(user)
                 }
             }
@@ -53,9 +52,15 @@ let Navbar = ({user ,setShowInsurance, image_url}) => {
         }
     }
     const imageComponent = () => {
+    image_url = getImageURL(); 
+    to_retain_discount = retain_discount();
+    console.log('Image Url :' + image_url);
         return (
             <div className="image_backshadow" onClick={hideImg}>
-                <img className="discountImage" src="https://d8rvi9tcdu8g2.cloudfront.net/a74cff00-e3ce-11e9-8f5d-7f27416c5f0d/urn:aaid:aem:d980b1be-8ace-4bf0-8a48-933ab8133001/oak:1.0::ci:1d7e666874608c3b8f813185d51b2ba4/509adbde-9a0a-321d-b421-5eb545f795a2" />
+                <div>
+                    <img className="discountImage" src={image_url} />
+                    <h3>Congrats!!, you get a {to_retain_discount} discount</h3>
+                </div>
             </div>
         )
     }
@@ -75,7 +80,9 @@ let Navbar = ({user ,setShowInsurance, image_url}) => {
                         <li> <a href="#">Contact</a></li>
                         <li> <a href="#">Stores</a></li>
                         <li> <a href="#">Offers</a></li>
-                        <li> <a href="" onClick={(e) => { e.preventDefault();  window.digitalData.category='insurance page'; setShowInsurance(true)} }>Insurance</a> </li>
+                        <li> <a href="" onClick={(e) => { e.preventDefault();  
+                            window.digitalData.category='insurance page'; 
+                            setShowInsurance(true)} }>Insurance</a> </li>
                         <li> <NotificationComponent showAlert={showAlert} alertUser={alertUser} /></li>
                         <li> Hello {user.givenName} {user.lastName}</li>
                     </ul>

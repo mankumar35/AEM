@@ -1,20 +1,24 @@
-import React, { Component }  from 'react';
+import React, { useState }  from 'react';
 import "./ProductCard.css"
 
-let ProductCard = ({ id }) => {
+let ProductCard = ({ id , src, text, cardAddToCartHandler}) => {
+
+    const [added, setAdded] = useState(false)
 
     let addToCart = () => {
-        console.log(id)
+        setAdded(true)
+
+        cardAddToCartHandler(id)
     }
 
     return (
-        <div className="productCard">
-            <img src="https://via.placeholder.com/400x200" />
+        <div className={`productCard + ${added ? " blocked" : "" }`}>
+            <img src={src} />
             <p className="productDescription">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                {text}
             </p>
             <button onClick={addToCart}>
-                Add insurance
+                {added ? "Added" : "Add insurance"}
             </button>
         </div>       
     )

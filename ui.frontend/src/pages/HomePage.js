@@ -1,15 +1,10 @@
 import React , {useEffect} from "react"
 import sendCoords from "../functions/sendCoords"
-import Navbar from "../components/navbar/Navbar"
 import "./codepen.css"
-import axios from "axios"
 
-const HomePage = ({user , setShowInsurance}) => {
-
+const HomePage = () => {
     return(
         <div>
-            <Navbar user={user} setShowInsurance={setShowInsurance}/>
-
             <div class="first_section">
                 <div class="container">
                     <div class="text">

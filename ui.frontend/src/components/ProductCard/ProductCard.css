@@ -8,11 +8,14 @@
     transition: 0.3s;
 }
 
-.productCard p {
+p.productDescription {
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
 }
 
 .productCard button {
@@ -28,4 +31,13 @@
     cursor: pointer;
     background-color: rgb(13, 163, 163);
     color: white;
+}
+
+.blocked {
+    background-color: rgba(3, 3, 3, 0.6) !important;
+}
+
+.productCard.blocked button {
+    background-color: rgb(0 ,0 ,0) !important;
+    color: white !important;
 }

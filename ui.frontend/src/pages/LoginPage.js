@@ -1,5 +1,4 @@
-import React from 'react';
-import cartModal from "../modal/CartModal"
+import React from "react"
 import "./LoginPage.css"
 import {customerList} from "../CustomerModel/Customers"
 import {useState} from "react"
@@ -14,7 +13,7 @@ let LoginPage = ({setFlag, setUser}) => {
         e.preventDefault()
         for (let customer of customerList) {
             if ( userName === customer.username && password === customer.password){
-            	window.digitalData.user.userInfo.authState='logged in';
+                window.digitalData.user.userInfo.authState='logged in';
             	window.digitalData.category='home page';
             	window.digitalData.user.userInfo.age= customer.age;
             	window.digitalData.user.userInfo.insuranceAge= customer.insuranceAge;

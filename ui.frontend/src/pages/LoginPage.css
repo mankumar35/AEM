@@ -6,6 +6,10 @@ main.loginPage{
     overflow-x: hidden;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 div.loginCard {
     position: absolute;
     width: 500px;
