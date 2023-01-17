@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    git remote add cmrepo https://$(bitbucket.username):$(bitbucket.password)@git.cloudmanager.adobe.com/sapientapacptrsd/austrade/
+    git checkout master
+    git pull
+    git push cmrepo master
+  displayName: 'Running sync script'
+
+
